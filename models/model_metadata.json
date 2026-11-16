@@ -1,0 +1,316 @@
+{
+  "dataset_label": "Unit Test Dataset",
+  "total_samples": 330,
+  "train_samples": 256,
+  "test_samples": 74,
+  "trained_at": "2026-11-09T22:22:52.790087",
+  "models": {
+    "Linear Regression": {
+      "metrics": {
+        "MAE": 2.361,
+        "RMSE": 3.127,
+        "R2": 0.693
+      },
+      "feature_importance": [
+        {
+          "feature": "baseline_duration",
+          "importance": 0.39466399006601965
+        },
+        {
+          "feature": "switch_count",
+          "importance": 0.27508275816079314
+        },
+        {
+          "feature": "interruption_duration",
+          "importance": 0.22415235883953563
+        },
+        {
+          "feature": "switch_density",
+          "importance": 0.04309877074070195
+        },
+        {
+          "feature": "baseline_accuracy",
+          "importance": 0.03850729370224966
+        },
+        {
+          "feature": "complexity_level",
+          "importance": 0.013696246555422713
+        },
+        {
+          "feature": "interruption_accuracy",
+          "importance": 0.01079858193527718
+        }
+      ],
+      "sample_predictions": [
+        {
+          "actual": 7.8,
+          "predicted": 11.05853931763128,
+          "residual": -3.2585393176312794,
+          "abs_error": 3.2585393176312794
+        },
+        {
+          "actual": 7.75,
+          "predicted": 11.592258299075823,
+          "residual": -3.842258299075823,
+          "abs_error": 3.842258299075823
+        },
+        {
+          "actual": 7.75,
+          "predicted": 11.592258299075823,
+          "residual": -3.842258299075823,
+          "abs_error": 3.842258299075823
+        },
+        {
+          "actual": 7.75,
+          "predicted": 11.592258299075823,
+          "residual": -3.842258299075823,
+          "abs_error": 3.842258299075823
+        },
+        {
+          "actual": 10.53,
+          "predicted": 10.389123939972901,
+          "residual": 0.1408760600270984,
+          "abs_error": 0.1408760600270984
+        },
+        {
+          "actual": 5.33,
+          "predicted": 10.229837785907415,
+          "residual": -4.899837785907415,
+          "abs_error": 4.899837785907415
+        },
+        {
+          "actual": 5.33,
+          "predicted": 10.229837785907415,
+          "residual": -4.899837785907415,
+          "abs_error": 4.899837785907415
+        },
+        {
+          "actual": 5.33,
+          "predicted": 10.229837785907415,
+          "residual": -4.899837785907415,
+          "abs_error": 4.899837785907415
+        },
+        {
+          "actual": 11.9,
+          "predicted": 11.009984765592606,
+          "residual": 0.8900152344073948,
+          "abs_error": 0.8900152344073948
+        },
+        {
+          "actual": 12.77,
+          "predicted": 17.038040057142684,
+          "residual": -4.268040057142684,
+          "abs_error": 4.268040057142684
+        }
+      ]
+    },
+    "Random Forest": {
+      "metrics": {
+        "MAE": 2.368,
+        "RMSE": 2.959,
+        "R2": 0.725
+      },
+      "feature_importance": [
+        {
+          "feature": "baseline_duration",
+          "importance": 0.4489030655688816
+        },
+        {
+          "feature": "interruption_duration",
+          "importance": 0.19930214165991003
+        },
+        {
+          "feature": "switch_count",
+          "importance": 0.1524584926422877
+        },
+        {
+          "feature": "switch_density",
+          "importance": 0.10968519884850558
+        },
+        {
+          "feature": "interruption_accuracy",
+          "importance": 0.03257134431845027
+        },
+        {
+          "feature": "complexity_level",
+          "importance": 0.030517522037552446
+        },
+        {
+          "feature": "baseline_accuracy",
+          "importance": 0.026562234924412505
+        }
+      ],
+      "sample_predictions": [
+        {
+          "actual": 7.8,
+          "predicted": 10.95408582409894,
+          "residual": -3.1540858240989396,
+          "abs_error": 3.1540858240989396
+        },
+        {
+          "actual": 7.75,
+          "predicted": 11.36085120030253,
+          "residual": -3.6108512003025304,
+          "abs_error": 3.6108512003025304
+        },
+        {
+          "actual": 7.75,
+          "predicted": 11.36085120030253,
+          "residual": -3.6108512003025304,
+          "abs_error": 3.6108512003025304
+        },
+        {
+          "actual": 7.75,
+          "predicted": 11.36085120030253,
+          "residual": -3.6108512003025304,
+          "abs_error": 3.6108512003025304
+        },
+        {
+          "actual": 10.53,
+          "predicted": 10.368882587243746,
+          "residual": 0.16111741275625313,
+          "abs_error": 0.16111741275625313
+        },
+        {
+          "actual": 5.33,
+          "predicted": 10.21520592951623,
+          "residual": -4.88520592951623,
+          "abs_error": 4.88520592951623
+        },
+        {
+          "actual": 5.33,
+          "predicted": 10.21520592951623,
+          "residual": -4.88520592951623,
+          "abs_error": 4.88520592951623
+        },
+        {
+          "actual": 5.33,
+          "predicted": 10.21520592951623,
+          "residual": -4.88520592951623,
+          "abs_error": 4.88520592951623
+        },
+        {
+          "actual": 11.9,
+          "predicted": 10.04262935426963,
+          "residual": 1.85737064573037,
+          "abs_error": 1.85737064573037
+        },
+        {
+          "actual": 12.77,
+          "predicted": 13.245194104836484,
+          "residual": -0.4751941048364845,
+          "abs_error": 0.4751941048364845
+        }
+      ]
+    },
+    "Gradient Boosting": {
+      "metrics": {
+        "MAE": 2.369,
+        "RMSE": 2.885,
+        "R2": 0.738
+      },
+      "feature_importance": [
+        {
+          "feature": "baseline_duration",
+          "importance": 0.4204908922193932
+        },
+        {
+          "feature": "interruption_duration",
+          "importance": 0.20926615576273822
+        },
+        {
+          "feature": "switch_count",
+          "importance": 0.16805032483436452
+        },
+        {
+          "feature": "switch_density",
+          "importance": 0.13326083847096476
+        },
+        {
+          "feature": "interruption_accuracy",
+          "importance": 0.03376774712902984
+        },
+        {
+          "feature": "baseline_accuracy",
+          "importance": 0.032146438214813805
+        },
+        {
+          "feature": "complexity_level",
+          "importance": 0.0030176033686955574
+        }
+      ],
+      "sample_predictions": [
+        {
+          "actual": 7.8,
+          "predicted": 10.611328817238478,
+          "residual": -2.8113288172384783,
+          "abs_error": 2.8113288172384783
+        },
+        {
+          "actual": 7.75,
+          "predicted": 12.98811950714116,
+          "residual": -5.23811950714116,
+          "abs_error": 5.23811950714116
+        },
+        {
+          "actual": 7.75,
+          "predicted": 12.98811950714116,
+          "residual": -5.23811950714116,
+          "abs_error": 5.23811950714116
+        },
+        {
+          "actual": 7.75,
+          "predicted": 12.98811950714116,
+          "residual": -5.23811950714116,
+          "abs_error": 5.23811950714116
+        },
+        {
+          "actual": 10.53,
+          "predicted": 10.140373655818305,
+          "residual": 0.3896263441816945,
+          "abs_error": 0.3896263441816945
+        },
+        {
+          "actual": 5.33,
+          "predicted": 9.002098351253617,
+          "residual": -3.6720983512536165,
+          "abs_error": 3.6720983512536165
+        },
+        {
+          "actual": 5.33,
+          "predicted": 9.002098351253617,
+          "residual": -3.6720983512536165,
+          "abs_error": 3.6720983512536165
+        },
+        {
+          "actual": 5.33,
+          "predicted": 9.002098351253617,
+          "residual": -3.6720983512536165,
+          "abs_error": 3.6720983512536165
+        },
+        {
+          "actual": 11.9,
+          "predicted": 12.43257564636644,
+          "residual": -0.5325756463664391,
+          "abs_error": 0.5325756463664391
+        },
+        {
+          "actual": 12.77,
+          "predicted": 13.997911622406686,
+          "residual": -1.2279116224066868,
+          "abs_error": 1.2279116224066868
+        }
+      ]
+    }
+  },
+  "best_model_name": "Gradient Boosting",
+  "feature_names": [
+    "complexity_level",
+    "baseline_duration",
+    "baseline_accuracy",
+    "interruption_duration",
+    "interruption_accuracy",
+    "switch_count",
+    "switch_density"
+  ]
+}

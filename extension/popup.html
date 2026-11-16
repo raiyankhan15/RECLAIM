@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>RECLAIM Tracker</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="popup-container">
+    <!-- Header -->
+    <div class="header">
+      <div class="brand">
+        <span class="logo-icon" style="background:#00E5FF; color:#0A0D12; font-weight:800; border-radius:4px; padding:2px 6px; font-size:12px;">R</span>
+        <div>
+          <h1 class="brand-title" style="letter-spacing:0.06em;">RECLAIM</h1>
+          <span class="brand-subtitle">Productivity Intelligence</span>
+        </div>
+      </div>
+      <div id="status-badge" class="badge badge-stopped">STOPPED</div>
+    </div>
+
+    <!-- Active State Alert Card -->
+    <div id="alert-card" class="alert-card alert-working">
+      <div class="alert-title" id="alert-title">Tracking Inactive</div>
+      <div class="alert-desc" id="alert-desc">Select an active tab to set as your primary task.</div>
+      <div id="interruption-timer" class="timer-display" style="display: none;">00:00</div>
+    </div>
+
+    <!-- Primary Task Info Card -->
+    <div class="info-card">
+      <div class="info-row">
+        <span class="info-label">Primary Task:</span>
+        <span class="info-value" id="primary-domain">Not Selected</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">Category:</span>
+        <span class="category-pill" id="primary-category">None</span>
+      </div>
+    </div>
+
+    <!-- Stats Grid -->
+    <div class="stats-grid">
+      <div class="stat-box">
+        <div class="stat-num" id="stat-switches">0</div>
+        <div class="stat-label">Switches</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num" id="stat-interruptions">0</div>
+        <div class="stat-label">Episodes</div>
+      </div>
+    </div>
+
+    <!-- Controls -->
+    <div class="btn-group">
+      <button id="btn-set-primary" class="btn btn-primary">
+        Set Current Tab as Primary Task
+      </button>
+
+      <div class="btn-row">
+        <button id="btn-pause-resume" class="btn btn-secondary" disabled>
+          Pause
+        </button>
+        <button id="btn-stop" class="btn btn-danger" disabled>
+          Stop
+        </button>
+      </div>
+
+      <button id="btn-open-dashboard" class="btn btn-outline">
+        Open RECLAIM Dashboard ↗
+      </button>
+    </div>
+
+    <!-- Footer Status -->
+    <div class="footer">
+      <span class="api-dot" id="api-status-dot"></span>
+      <span id="api-status-text">Checking API...</span>
+    </div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
+
