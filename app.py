@@ -6,6 +6,7 @@ All visual styling lives in assets/style.css; this file only emits semantic clas
 
 import os
 import urllib.request
+from pathlib import Path
 
 import streamlit as st
 
@@ -61,9 +62,26 @@ def _status_row(label: str, value: str, tone: str) -> str:
     )
 
 
-def _api_online() -> bool:
+def _api_url():
+    """Where the FastAPI backend lives. Set RECLAIM_API_URL (env var or Streamlit secret)
+    once the API is hosted. Locally it defaults to localhost. On Streamlit Cloud with no
+    URL configured there is no backend to reach, so return None (demo mode)."""
+    url = os.environ.get("RECLAIM_API_URL")
+    if not url:
+        try:
+            url = st.secrets.get("RECLAIM_API_URL")
+        except Exception:
+            url = None
+    if url:
+        return url.rstrip("/")
+    if Path("/mount/src").exists():  # Streamlit Community Cloud
+        return None
+    return "http://127.0.0.1:8000"
+
+
+def _api_online(url: str) -> bool:
     try:
-        with urllib.request.urlopen("http://127.0.0.1:8000/api/health", timeout=0.4) as resp:
+        with urllib.request.urlopen(f"{url}/api/health", timeout=0.8) as resp:
             return resp.status == 200
     except Exception:
         return False
@@ -116,12 +134,17 @@ def render_sidebar() -> str:
         else:
             ml_text, ml_tone = "No model", "bad"
 
-        api_up = _api_online()
+        api_url = _api_url()
+        if api_url is None:
+            api_row = _status_row("API server", "Demo mode", "idle")
+        else:
+            api_up = _api_online(api_url)
+            api_row = _status_row("API server", "Online" if api_up else "Offline", "ok" if api_up else "bad")
 
         st.markdown(
             '<div class="rc-status">'
             '<div class="rc-status-title">System status</div>'
-            + _status_row("API server", "Online" if api_up else "Offline", "ok" if api_up else "bad")
+            + api_row
             + _status_row("Sessions", f"{session_count} tracked", "ok" if session_count else "idle")
             + _status_row("Interruptions", f"{episode_count} logged", "warn" if episode_count else "idle")
             + _status_row("ML engine", ml_text, ml_tone)
