@@ -1,4 +1,3 @@
-
 """
 dashboard/overview.py - RECLAIM main dashboard.
 
@@ -136,7 +135,13 @@ def render_overview():
 
     # ---------- KPIs ----------
     st.subheader("Today's overview")
-    c1, c2, c3 = st.columns(3)
+    latencies = [
+        float(e["return_latency_sec"])
+        for e in episodes
+        if e.get("return_latency_sec") is not None and float(e["return_latency_sec"]) >= 0
+    ]
+    cols = st.columns(4 if latencies else 3)
+    c1, c2, c3 = cols[:3]
     with c1:
         st.metric("Interruptions", interruptions, help="Times you left your primary task in the latest session.")
     with c2:
@@ -148,9 +153,17 @@ def render_overview():
             help="Context Recovery Cost: how long it takes to get back into your task after an interruption.",
         )
         if crc is None:
-            st.caption("Appears after you return to your primary task from an interruption.")
+            st.caption("Measured in controlled experiment trials. Browser tracking alone can't measure it.")
         else:
             st.caption(f"Across {len(crc_values)} measured recover{'y' if len(crc_values) == 1 else 'ies'}.")
+    if latencies:
+        with cols[3]:
+            st.metric(
+                "Avg return latency",
+                format_duration(sum(latencies) / len(latencies)),
+                help="Browser-measured return time after an interruption. A proxy, not CRC.",
+            )
+            st.caption(f"From {len(latencies)} browser episode{'s' if len(latencies) != 1 else ''}.")
 
     # ---------- Insight ----------
     if current_episodes:

@@ -21,6 +21,7 @@ from dashboard.live_tracking import render_live_tracking
 from dashboard.recovery_analytics import render_recovery_analytics
 from dashboard.predictions import render_predictions
 from dashboard.insights import render_insights
+from dashboard.experiment_lab import render_experiment_lab
 
 init_all_tables()
 
@@ -46,6 +47,7 @@ NAV_PAGES = [
     ("Live Tracking", ":material/sensors:"),
     ("Recovery Analytics", ":material/show_chart:"),
     ("ML Predictions", ":material/psychology:"),
+    ("Experiment Lab", ":material/experiment:"),
     ("Research Insights", ":material/science:"),
 ]
 
@@ -137,6 +139,7 @@ def main():
         "Live Tracking": render_live_tracking,
         "Recovery Analytics": render_recovery_analytics,
         "ML Predictions": render_predictions,
+        "Experiment Lab": render_experiment_lab,
         "Research Insights": render_insights,
     }[page]()
 
