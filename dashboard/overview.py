@@ -133,6 +133,16 @@ def render_overview():
     crc_values = measured_crc_values(episodes, experiments)
     crc = sum(crc_values) / len(crc_values) if crc_values else None
 
+    # No real trials yet: fall back to the demo dataset, clearly labelled as demo data.
+    demo_values = [
+        float(x["crc_seconds"])
+        for x in experiments
+        if x.get("data_source") == "SYNTHETIC_DEMO" and x.get("crc_seconds") is not None
+    ]
+    is_demo = crc is None and bool(demo_values)
+    if is_demo:
+        crc = sum(demo_values) / len(demo_values)
+
     # ---------- KPIs ----------
     st.subheader("Today's overview")
     latencies = [
@@ -148,11 +158,13 @@ def render_overview():
         st.metric("Time away", format_duration(time_away), help="Total time spent off your primary task in the latest session.")
     with c3:
         st.metric(
-            "Average measured CRC",
+            "Average CRC (demo data)" if is_demo else "Average measured CRC",
             format_duration(crc) if crc is not None else "No data yet",
             help="Context Recovery Cost: how long it takes to get back into your task after an interruption.",
         )
-        if crc is None:
+        if is_demo:
+            st.caption(f"Synthetic demo trials ({len(demo_values)}). Run the Experiment Lab for real measurements.")
+        elif crc is None:
             st.caption("Measured in controlled experiment trials. Browser tracking alone can't measure it.")
         else:
             st.caption(f"Across {len(crc_values)} measured recover{'y' if len(crc_values) == 1 else 'ies'}.")
